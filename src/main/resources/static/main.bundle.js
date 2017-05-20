@@ -76,7 +76,7 @@ var BankService = (function () {
         this.http = http;
     }
     BankService.prototype.getTotal = function () {
-        return this.http.get('/api/piggy-bank/add-money/0')
+        return this.http.get('/api/get-account')
             .map(function (res) { return res.json(); });
     };
     BankService = __decorate([
