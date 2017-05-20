@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import projectchild.ProjectChild;
 import tirelire.exception.CantRemoveMoney;
 import tirelire.job.CompteJob;
+import tirelire.piggybank.Autorisation;
 import tirelire.piggybank.PiggyBank;
+
+import java.text.ParseException;
 
 /**
  * Created by sleroy on 19/05/17.
@@ -43,8 +46,14 @@ public class TirelireRestController {
         System.out.println(piggyBank.getAmount());
         return piggyBank;
     }
+    @RequestMapping(value = "/api/piggy-bank/update-autorisation", method = RequestMethod.POST)
+    public  @ResponseBody PiggyBank  updateAutorisation( @RequestBody Integer amount)  {
+        piggyBank.setAutorisation(new Autorisation(amount));
+        System.out.println(piggyBank.getAmount());
+        return piggyBank;
+    }
     @RequestMapping(value = "/api/piggy-bank/remove-money", method = RequestMethod.POST)
-    public @ResponseBody PiggyBank  reduce( @RequestBody Integer number) throws CantRemoveMoney {
+    public @ResponseBody PiggyBank  reduce( @RequestBody Integer number) throws CantRemoveMoney, ParseException {
         //return compteJob.getSold(login);
         piggyBank.removeMoney(number);
         //  System.out.println(piggyBank.getAmount());
@@ -53,10 +62,10 @@ public class TirelireRestController {
     @RequestMapping(value = "/api/piggy-bank/create-project", method = RequestMethod.POST)
     public @ResponseBody PiggyBank  create( @RequestBody Integer number,
                                             @RequestBody String name) throws CantRemoveMoney {
-        ProjectChild projectChild;
-        if(name!=null)
+        ProjectChild projectChild = null;
+        if(name!=null && number!=null)
             projectChild = new ProjectChild(name,number);
-        else
+        else if(number!=null)
              projectChild = new ProjectChild("project"+number,number);
 
         //return compteJob.getSold(login);
