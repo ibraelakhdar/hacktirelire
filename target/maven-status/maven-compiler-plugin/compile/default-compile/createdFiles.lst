@@ -2,6 +2,7 @@ tirelire/TirelireRestController.class
 tirelire/piggybank/TypeTransaction.class
 tirelire/model/Compte.class
 tirelire/job/CompteJob.class
+tirelire/job/PiggyBankToJson.class
 tirelire/job/LoginJob.class
 tirelire/piggybank/Transaction.class
 tirelire/piggybank/PiggyBank.class

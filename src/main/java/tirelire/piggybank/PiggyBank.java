@@ -1,18 +1,24 @@
 package tirelire.piggybank;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import tirelire.exception.CantRemoveMoney;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by pictime on 20/05/17.
  */
-public class PiggyBank {
+public class PiggyBank implements Serializable {
 
     private PiggyBank(){}
     private Integer amount = 0;
-    private ArrayList<Transaction> history = new ArrayList<Transaction>(l);
+    ObjectMapper mapper = new ObjectMapper();
+
+    private ArrayList<Transaction> history = new ArrayList<Transaction>();
 
     private static PiggyBank PIGGYBANK = new PiggyBank();
 
@@ -23,13 +29,13 @@ public class PiggyBank {
 
     public Integer addMoney(Integer value){
         System.out.println(value);
-        history.add(new Transaction(value, new Date(), TypeTransaction.DEPOT));
+        history.add(new Transaction(value,  (new SimpleDateFormat("MM-dd-yyyy").format(new Date())).toString(), TypeTransaction.DEPOT));
         return amount+=value;
     }
 
     public Integer removeMoney(Integer value) throws CantRemoveMoney {
         if( amount > value ) throw new CantRemoveMoney();
-        history.add(new Transaction(value, new Date(), TypeTransaction.RETRAIT));
+        history.add(new Transaction(value, ((new SimpleDateFormat("MM-dd-yyyy").format(new Date())).toString()).toString(), TypeTransaction.RETRAIT));
         return amount-=value;
     }
 
@@ -48,4 +54,5 @@ public class PiggyBank {
     public void setHistory(ArrayList<Transaction> history) {
         this.history = history;
     }
+
 }

@@ -8,10 +8,10 @@ import java.util.Date;
 public class Transaction {
 
     private Integer amount;
-    private Date date;
+    private String date;
     private TypeTransaction type;
 
-    public Transaction(Integer amount, Date date, TypeTransaction type) {
+    public Transaction(Integer amount, String date, TypeTransaction type) {
         this.amount = amount;
         this.date = date;
         this.type = type;
@@ -25,11 +25,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -1,8 +1,10 @@
 package tirelire;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import tirelire.exception.CantRemoveMoney;
 import tirelire.job.CompteJob;
 import tirelire.piggybank.PiggyBank;
 
@@ -29,17 +31,19 @@ public class TirelireRestController {
         return new Double(500);
     }
     @RequestMapping(value = "/api/piggy-bank/add-money/{number}", method = RequestMethod.GET)
-    public Integer add( @PathVariable(value="number") Integer number) {
+    public  @ResponseBody PiggyBank  add( @PathVariable(value="number") Integer number) throws JsonProcessingException {
         piggyBank.addMoney(number);
-        System.out.println(piggyBank.getAmount());
-        return piggyBank.getAmount();
+      //  System.out.println(piggyBank.getAmount());
+        return piggyBank;
     }
-    @RequestMapping(value = "/api/reduceSolde", method = RequestMethod.GET)
-    public Double reduce(@RequestParam(required = true, value="login") final String login,
-                         @RequestParam(required = true, value="amount") final Double amount) {
+    @RequestMapping(value = "/api/piggy-bank/remove-money/{number}", method = RequestMethod.GET)
+    public @ResponseBody PiggyBank  reduce( @RequestParam(value="number") final Integer number) throws CantRemoveMoney {
         //return compteJob.getSold(login);
-        return new Double(500-amount);
+        piggyBank.removeMoney(number);
+        //  System.out.println(piggyBank.getAmount());
+        return piggyBank;
     }
+
 
 
 
