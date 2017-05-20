@@ -380,7 +380,7 @@ module.exports = ""
 /***/ 619:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home(eventEmitter)=\"update($event)\"></app-home>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home (eventEmitter)=\"update($event)\"></app-home>\n"
 
 /***/ }),
 
