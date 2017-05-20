@@ -20,11 +20,24 @@ public class TirelireRestController {
     }
 
 
-    @RequestMapping(value = "/api/solde", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Double login(@RequestParam(required = true, value="login") final String login) {
+    @RequestMapping(value = "/api/solde", method = RequestMethod.GET)
+    public Double getSolde(@RequestParam(required = true, value="login") final String login) {
         //return compteJob.getSold(login);
         return new Double(500);
     }
+    @RequestMapping(value = "/api/addSolde", method = RequestMethod.GET)
+    public Double add(@RequestParam(required = true, value="login") final String login,
+                      @RequestParam(required = true, value="solde") final Double solde) {
+        //return compteJob.getSold(login);
+        return new Double(500+solde);
+    }
+    @RequestMapping(value = "/api/reduceSolde", method = RequestMethod.GET)
+    public Double reduce(@RequestParam(required = true, value="login") final String login,
+                         @RequestParam(required = true, value="amount") final Double amount) {
+        //return compteJob.getSold(login);
+        return new Double(500-amount);
+    }
+
 
 
 
