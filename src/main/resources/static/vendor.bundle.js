@@ -38796,14 +38796,14 @@ function FormControlName_tsickle_Closure_declarations() {
 /* unused harmony reexport XHRBackend */
 /* unused harmony reexport XHRConnection */
 /* unused harmony reexport BaseRequestOptions */
-/* unused harmony reexport RequestOptions */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
 /* unused harmony reexport BaseResponseOptions */
 /* unused harmony reexport ResponseOptions */
 /* unused harmony reexport ReadyState */
 /* unused harmony reexport RequestMethod */
 /* unused harmony reexport ResponseContentType */
 /* unused harmony reexport ResponseType */
-/* unused harmony reexport Headers */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["d"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["a"]; });
 /* unused harmony reexport Jsonp */
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
@@ -70541,7 +70541,7 @@ function JsonpModule_tsickle_Closure_declarations() {
 /* unused harmony reexport XHRConnection */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_request_options__ = __webpack_require__(190);
 /* unused harmony reexport BaseRequestOptions */
-/* unused harmony reexport RequestOptions */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__base_request_options__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__base_response_options__ = __webpack_require__(133);
 /* unused harmony reexport BaseResponseOptions */
 /* unused harmony reexport ResponseOptions */
@@ -70551,7 +70551,7 @@ function JsonpModule_tsickle_Closure_declarations() {
 /* unused harmony reexport ResponseContentType */
 /* unused harmony reexport ResponseType */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__headers__ = __webpack_require__(92);
-/* unused harmony reexport Headers */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_6__headers__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__http__ = __webpack_require__(291);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
 /* unused harmony reexport Jsonp */

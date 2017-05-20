@@ -31,7 +31,9 @@ var BankService = (function () {
     };
     BankService.prototype.addAmount = function (amount) {
         console.log(amount);
-        this.http.post('/api/piggy-bank/add-money', { amount: amount }).subscribe(function (res) { return console.log(res); });
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        this.http.post('/api/piggy-bank/add-money', amount, options).subscribe(function (res) { return console.log(res); });
     };
     BankService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
