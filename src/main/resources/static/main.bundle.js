@@ -157,6 +157,9 @@ var AppComponent = (function () {
         this.bankService = bankService;
         this.bank = bankService.getTotal().subscribe(function (value) { return _this.bank = value; });
     }
+    AppComponent.prototype.update = function (bank) {
+        this.bank = bank;
+    };
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-root',
@@ -257,6 +260,7 @@ var HomeComponent = (function () {
     function HomeComponent(_userService, _bankService) {
         this._userService = _userService;
         this._bankService = _bankService;
+        this.eventEmitter = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* EventEmitter */]();
     }
     HomeComponent.prototype.ngOnInit = function () {
     };
@@ -270,11 +274,18 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.add = function (amount) {
         var _this = this;
-        this._bankService.addAmount(amount).subscribe(function (res) { return _this.amount = res.amount; });
+        this._bankService.addAmount(amount).subscribe(function (res) {
+            _this.amount = res.amount;
+            _this.eventEmitter.emit(res);
+        });
     };
     HomeComponent.prototype.remove = function (amount) {
         this._bankService.removeAmount(amount);
     };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(), 
+        __metadata('design:type', Object)
+    ], HomeComponent.prototype, "eventEmitter", void 0);
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-home',
@@ -369,7 +380,7 @@ module.exports = ""
 /***/ 619:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home></app-home>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home(eventEmitter)=\"update($event)\"></app-home>\n"
 
 /***/ }),
 
