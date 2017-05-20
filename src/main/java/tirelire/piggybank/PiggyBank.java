@@ -17,8 +17,6 @@ public class PiggyBank implements Serializable {
 
     private PiggyBank(){}
     private Integer amount = 0;
-    ObjectMapper mapper = new ObjectMapper();
-
     private ArrayList<Transaction> history = new ArrayList<Transaction>();
     private ProjectChild project;
     private static PiggyBank PIGGYBANK = new PiggyBank();
@@ -56,7 +54,24 @@ public class PiggyBank implements Serializable {
         this.history = history;
     }
     public void createProject(ProjectChild project) {
+        if(this.project==null)
+            this.project = project;
+    }
+
+    public ProjectChild getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectChild project) {
         this.project = project;
     }
 
+    @Override
+    public String toString() {
+        return "PiggyBank{" +
+                "amount=" + amount +
+                ", history=" + history +
+                ", project=" + project +
+                '}';
+    }
 }

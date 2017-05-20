@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Created by pictime on 20/05/17.
  */
-public class ProjectChild implements Serializable {
+public class ProjectChild {
 
     private String name;
     private Integer amount = 0;
@@ -36,6 +36,11 @@ public class ProjectChild implements Serializable {
         this.amount = amount;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "ProjectChild{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
 }

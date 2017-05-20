@@ -62,6 +62,7 @@ public class TirelireRestController {
         //return compteJob.getSold(login);
         piggyBank.createProject(projectChild);
         //  System.out.println(piggyBank.getAmount());
+        System.out.print(piggyBank);
         return piggyBank;
     }
 

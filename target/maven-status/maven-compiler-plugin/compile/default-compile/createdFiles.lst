@@ -1,11 +1,12 @@
 tirelire/TirelireRestController.class
 tirelire/piggybank/TypeTransaction.class
-tirelire/model/Compte.class
-tirelire/job/CompteJob.class
 tirelire/job/PiggyBankToJson.class
 tirelire/job/LoginJob.class
-tirelire/piggybank/Transaction.class
+tirelire/job/CompteJob.class
+projectchild/ProjectChild.class
 tirelire/piggybank/PiggyBank.class
-tirelire/model/User.class
 tirelire/exception/CantRemoveMoney.class
+tirelire/model/Compte.class
+tirelire/piggybank/Transaction.class
+tirelire/model/User.class
 tirelire/App.class
