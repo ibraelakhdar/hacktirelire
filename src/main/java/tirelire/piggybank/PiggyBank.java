@@ -34,7 +34,7 @@ public class PiggyBank implements Serializable {
     }
 
     public Integer removeMoney(Integer value) throws CantRemoveMoney {
-        if( amount > value ) throw new CantRemoveMoney();
+        if( amount < value ) throw new CantRemoveMoney();
         history.add(new Transaction(value, ((new SimpleDateFormat("MM-dd-yyyy").format(new Date())).toString()).toString(), TypeTransaction.RETRAIT));
         return amount-=value;
     }

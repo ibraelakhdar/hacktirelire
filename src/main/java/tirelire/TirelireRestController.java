@@ -30,6 +30,12 @@ public class TirelireRestController {
         //return compteJob.getSold(login);
         return new Double(500);
     }
+    @RequestMapping(value = "/api/piggy-bank/get-account/", method = RequestMethod.GET)
+    public  @ResponseBody PiggyBank  get() throws JsonProcessingException {
+        //piggyBank.addMoney(number);
+        // System.out.println(piggyBank.getAmount());
+        return piggyBank;
+    }
     @RequestMapping(value = "/api/piggy-bank/add-money/{number}", method = RequestMethod.GET)
     public  @ResponseBody PiggyBank  add( @PathVariable(value="number") Integer number) throws JsonProcessingException {
         piggyBank.addMoney(number);
@@ -37,7 +43,7 @@ public class TirelireRestController {
         return piggyBank;
     }
     @RequestMapping(value = "/api/piggy-bank/remove-money/{number}", method = RequestMethod.GET)
-    public @ResponseBody PiggyBank  reduce( @RequestParam(value="number") final Integer number) throws CantRemoveMoney {
+    public @ResponseBody PiggyBank  reduce( @PathVariable(value="number") final Integer number) throws CantRemoveMoney {
         //return compteJob.getSold(login);
         piggyBank.removeMoney(number);
         //  System.out.println(piggyBank.getAmount());
