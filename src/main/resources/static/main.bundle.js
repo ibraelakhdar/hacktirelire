@@ -35,7 +35,7 @@ var BankService = (function () {
         return this.http.post('/api/piggy-bank/add-money', amount, this.options);
     };
     BankService.prototype.removeAmount = function (amount) {
-        this.http.post('/api/piggy-bank/remove-money', amount, this.options).subscribe(function (res) { return console.log(res); });
+        this.http.post('/api/piggy-bank/remove-money', amount, this.options).subscribe(function (res) { return console.log(res.text()); });
     };
     BankService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
