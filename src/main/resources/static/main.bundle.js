@@ -32,7 +32,7 @@ var BankService = (function () {
             .map(function (res) { return res.json(); });
     };
     BankService.prototype.addAmount = function (amount) {
-        this.http.post('/api/piggy-bank/add-money', amount, this.options).subscribe(function (res) { return console.log(res); });
+        return this.http.post('/api/piggy-bank/add-money', amount, this.options);
     };
     BankService.prototype.removeAmount = function (amount) {
         this.http.post('/api/piggy-bank/remove-money', amount, this.options).subscribe(function (res) { return console.log(res); });
@@ -269,7 +269,8 @@ var HomeComponent = (function () {
         console.log(this._currentUser);
     };
     HomeComponent.prototype.add = function (amount) {
-        this._bankService.addAmount(amount);
+        var _this = this;
+        this._bankService.addAmount(amount).subscribe(function (res) { return _this.amount = res.amount; });
     };
     HomeComponent.prototype.remove = function (amount) {
         this._bankService.removeAmount(amount);
