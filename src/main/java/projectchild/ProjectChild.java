@@ -15,7 +15,7 @@ public class ProjectChild {
 
     private String name;
     private Integer amount = 0;
-
+    private double pourcentage;
 
 
      public ProjectChild(String name,Integer amount ){this.name=name;this.amount=amount;}
@@ -34,6 +34,14 @@ public class ProjectChild {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public double getPourcentage() {
+        return pourcentage;
+    }
+
+    public void setPourcentage(double pourcentage) {
+        this.pourcentage = pourcentage;
     }
 
     @Override

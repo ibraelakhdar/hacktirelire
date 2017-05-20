@@ -37,10 +37,10 @@ public class TirelireRestController {
         // System.out.println(piggyBank.getAmount());
         return piggyBank;
     }
-    @RequestMapping(value = "/api/piggy-bank/add-money/{number}", method = RequestMethod.GET)
-    public  @ResponseBody PiggyBank  add( @PathVariable(value="number") Integer number) throws JsonProcessingException {
-        piggyBank.addMoney(number);
-      //  System.out.println(piggyBank.getAmount());
+    @RequestMapping(value = "/api/piggy-bank/add-money", method = RequestMethod.POST)
+    public  @ResponseBody PiggyBank  add( @RequestBody Integer amount) throws JsonProcessingException {
+        piggyBank.addMoney(amount);
+        System.out.println(piggyBank.getAmount());
         return piggyBank;
     }
     @RequestMapping(value = "/api/piggy-bank/remove-money/{number}", method = RequestMethod.GET)

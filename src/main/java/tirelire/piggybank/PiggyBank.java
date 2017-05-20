@@ -29,13 +29,17 @@ public class PiggyBank implements Serializable {
     public Integer addMoney(Integer value){
         System.out.println(value);
         history.add(new Transaction(value,  (new SimpleDateFormat("MM-dd-yyyy").format(new Date())).toString(), TypeTransaction.DEPOT));
-        return amount+=value;
-    }
+        amount+=value;
+        updatePourcentageProject();
+        return amount;    }
 
     public Integer removeMoney(Integer value) throws CantRemoveMoney {
         if( amount < value ) throw new CantRemoveMoney();
         history.add(new Transaction(value, ((new SimpleDateFormat("MM-dd-yyyy").format(new Date())).toString()).toString(), TypeTransaction.RETRAIT));
-        return amount-=value;
+
+         amount-=value;
+        updatePourcentageProject();
+        return amount;
     }
 
     public Integer getAmount() {
@@ -66,6 +70,10 @@ public class PiggyBank implements Serializable {
         this.project = project;
     }
 
+    public void updatePourcentageProject() {
+        if(this.project!=null)
+            this.project.setPourcentage(this.amount/this.project.getAmount());
+    }
     @Override
     public String toString() {
         return "PiggyBank{" +
