@@ -271,6 +271,9 @@ var HomeComponent = (function () {
     HomeComponent.prototype.add = function (amount) {
         this._bankService.addAmount(amount);
     };
+    HomeComponent.prototype.remove = function (amount) {
+        this._bankService.removeAmount(amount);
+    };
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-home',
