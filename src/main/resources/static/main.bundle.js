@@ -55,10 +55,9 @@ var UserService = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(624);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(623);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_type_transaction_enum__ = __webpack_require__(460);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BankService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -72,24 +71,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var BankService = (function () {
     function BankService(http) {
         this.http = http;
     }
-    /*list(): Observable<Array<BankModel>> {
-     return this.http.get(`api/bank/total`)
-     .map(res => res.json());
-     }*/
     BankService.prototype.getTotal = function () {
-        return {
-            amount: 300,
-            history: [
-                { amount: 30, date: new Date('2017-01-01'), type: __WEBPACK_IMPORTED_MODULE_3__models_type_transaction_enum__["a" /* TypeTransaction */].retrait },
-                { amount: 10, date: new Date('2017-05-12'), type: __WEBPACK_IMPORTED_MODULE_3__models_type_transaction_enum__["a" /* TypeTransaction */].depot },
-                { amount: 15, date: new Date('2017-06-02'), type: __WEBPACK_IMPORTED_MODULE_3__models_type_transaction_enum__["a" /* TypeTransaction */].retrait }
-            ]
-        };
+        return this.http.get('/api/piggy-bank/add-money/0')
+            .map(function (res) { return res.json(); });
     };
     BankService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
@@ -123,7 +111,7 @@ webpackEmptyContext.id = 348;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(437);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(458);
 
 
@@ -157,14 +145,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent(bankService) {
+        var _this = this;
         this.bankService = bankService;
-        this.bank = bankService.getTotal();
+        this.bank = bankService.getTotal().subscribe(function (value) { return _this.bank = value; });
     }
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-root',
-            template: __webpack_require__(620),
-            styles: [__webpack_require__(617)]
+            template: __webpack_require__(619),
+            styles: [__webpack_require__(616)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_bank_service__["a" /* BankService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_bank_service__["a" /* BankService */]) === 'function' && _a) || Object])
     ], AppComponent);
@@ -186,7 +175,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(457);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_bank_service__ = __webpack_require__(303);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__home_home_component__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__user_user_component__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__user_user_component__ = __webpack_require__(460);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__user_user_service__ = __webpack_require__(200);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -271,8 +260,8 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-home',
-            template: __webpack_require__(621),
-            styles: [__webpack_require__(618)]
+            template: __webpack_require__(620),
+            styles: [__webpack_require__(617)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_user_service__["a" /* UserService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__user_user_service__["a" /* UserService */]) === 'function' && _a) || Object])
     ], HomeComponent);
@@ -284,20 +273,6 @@ var HomeComponent = (function () {
 /***/ }),
 
 /***/ 460:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TypeTransaction; });
-var TypeTransaction;
-(function (TypeTransaction) {
-    TypeTransaction[TypeTransaction["retrait"] = 0] = "retrait";
-    TypeTransaction[TypeTransaction["depot"] = 1] = "depot";
-})(TypeTransaction || (TypeTransaction = {}));
-//# sourceMappingURL=/home/pictime/WebstormProjects/money/src/type.transaction.enum.js.map
-
-/***/ }),
-
-/***/ 461:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -324,8 +299,8 @@ var UserComponent = (function () {
     UserComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-user',
-            template: __webpack_require__(622),
-            styles: [__webpack_require__(619)]
+            template: __webpack_require__(621),
+            styles: [__webpack_require__(618)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__user_service__["a" /* UserService */]) === 'function' && _a) || Object])
     ], UserComponent);
@@ -336,7 +311,7 @@ var UserComponent = (function () {
 
 /***/ }),
 
-/***/ 462:
+/***/ 461:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -349,6 +324,13 @@ var environment = {
     production: false
 };
 //# sourceMappingURL=/home/pictime/WebstormProjects/money/src/environment.js.map
+
+/***/ }),
+
+/***/ 616:
+/***/ (function(module, exports) {
+
+module.exports = ""
 
 /***/ }),
 
@@ -369,32 +351,25 @@ module.exports = ""
 /***/ 619:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home></app-home>\n"
 
 /***/ }),
 
 /***/ 620:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    <h1>\n      Ton solde : {{bank.amount | currency:'EUR':true}}\n    </h1>\n    <h2>Historique</h2>\n    <ul>\n      <li *ngFor=\"let trans of bank.history\"><span [ngClass]=\"{'text-danger': trans.type,'text-success': !trans.type}\">{{trans.amount | currency:'EUR':true}} - {{trans.date | date:'shortDate'}}</span></li>\n    </ul>\n  </div>\n</div>\n<app-home></app-home>\n"
+module.exports = "<div *ngIf=\"!_currentUser\">\n  <div class=\"text-xs-center\" style=\"margin-top: 100px\">\n    <h1>Papa ? Maman ? <small>Connectez vous pour gérer le piggy</small></h1>\n  </div>\n  <button (click)=\"getParent()\" type=\"button\" class=\"btn btn-primary btn-lg\">Se connecter</button>\n</div>\n"
 
 /***/ }),
 
 /***/ 621:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!_currentUser\">\n  <div class=\"text-xs-center\" style=\"margin-top: 100px\">\n    <h1>Papa ? Maman ? <small>Connectez vous pour gérer le piggy</small></h1>\n  </div>\n  <button (click)=\"getParent()\" type=\"button\" class=\"btn btn-primary btn-lg\">Se connecter</button>\n</div>\n"
-
-/***/ }),
-
-/***/ 622:
-/***/ (function(module, exports) {
-
 module.exports = "<p>\n  user works!\n</p>\n"
 
 /***/ }),
 
-/***/ 639:
+/***/ 638:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(349);
@@ -402,5 +377,5 @@ module.exports = __webpack_require__(349);
 
 /***/ })
 
-},[639]);
+},[638]);
 //# sourceMappingURL=main.bundle.map
