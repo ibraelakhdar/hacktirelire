@@ -158,6 +158,7 @@ var AppComponent = (function () {
         this.bank = bankService.getTotal().subscribe(function (value) { return _this.bank = value; });
     }
     AppComponent.prototype.update = function (bank) {
+        console.log(bank);
         this.bank = bank;
     };
     AppComponent = __decorate([
