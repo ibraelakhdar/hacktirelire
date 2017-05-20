@@ -38,21 +38,21 @@ public class TirelireRestController {
         return piggyBank;
     }
     @RequestMapping(value = "/api/piggy-bank/add-money", method = RequestMethod.POST)
-    public  @ResponseBody PiggyBank  add( @RequestBody Integer amount) throws JsonProcessingException {
+    public  @ResponseBody PiggyBank  add( @RequestBody Integer amount)  {
         piggyBank.addMoney(amount);
         System.out.println(piggyBank.getAmount());
         return piggyBank;
     }
-    @RequestMapping(value = "/api/piggy-bank/remove-money/{number}", method = RequestMethod.GET)
-    public @ResponseBody PiggyBank  reduce( @PathVariable(value="number") final Integer number) throws CantRemoveMoney {
+    @RequestMapping(value = "/api/piggy-bank/remove-money", method = RequestMethod.POST)
+    public @ResponseBody PiggyBank  reduce( @RequestBody Integer number) throws CantRemoveMoney {
         //return compteJob.getSold(login);
         piggyBank.removeMoney(number);
         //  System.out.println(piggyBank.getAmount());
         return piggyBank;
     }
-    @RequestMapping(value = "/api/piggy-bank/create-project/{number}", method = RequestMethod.GET)
-    public @ResponseBody PiggyBank  create( @PathVariable(value="number") final Integer number,
-                                            @RequestParam(required = false, value="name") final String name) throws CantRemoveMoney {
+    @RequestMapping(value = "/api/piggy-bank/create-project", method = RequestMethod.POST)
+    public @ResponseBody PiggyBank  create( @RequestBody Integer number,
+                                            @RequestBody String name) throws CantRemoveMoney {
         ProjectChild projectChild;
         if(name!=null)
             projectChild = new ProjectChild(name,number);

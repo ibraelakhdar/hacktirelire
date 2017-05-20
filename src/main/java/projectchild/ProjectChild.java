@@ -49,6 +49,7 @@ public class ProjectChild {
         return "ProjectChild{" +
                 "name='" + name + '\'' +
                 ", amount=" + amount +
+                ", pourcentage=" + pourcentage +
                 '}';
     }
 }
