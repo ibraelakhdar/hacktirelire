@@ -30,7 +30,8 @@ var BankService = (function () {
             .map(function (res) { return res.json(); });
     };
     BankService.prototype.addAmount = function (amount) {
-        this.http.get('api/piggy-bank/add-money/' + amount);
+        console.log(amount);
+        this.http.post('piggy-bank/add-money/', { amount: amount });
     };
     BankService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
