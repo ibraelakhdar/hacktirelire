@@ -24,16 +24,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var BankService = (function () {
     function BankService(http) {
         this.http = http;
+        this.header = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        this.options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: this.header });
     }
     BankService.prototype.getTotal = function () {
         return this.http.get('/api/piggy-bank/get-account')
             .map(function (res) { return res.json(); });
     };
     BankService.prototype.addAmount = function (amount) {
-        console.log(amount);
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
-        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        this.http.post('/api/piggy-bank/add-money', amount, options).subscribe(function (res) { return console.log(res); });
+        this.http.post('/api/piggy-bank/add-money', amount, this.options).subscribe(function (res) { return console.log(res); });
+    };
+    BankService.prototype.removeAmount = function (amount) {
+        this.http.post('/api/piggy-bank/remove-money', amount, this.options).subscribe(function (res) { return console.log(res); });
     };
     BankService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
@@ -269,6 +271,9 @@ var HomeComponent = (function () {
     HomeComponent.prototype.add = function (amount) {
         this._bankService.addAmount(amount);
     };
+    HomeComponent.prototype.remove = function (amount) {
+        this._bankService.removeAmount(amount);
+    };
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
             selector: 'app-home',
@@ -370,7 +375,7 @@ module.exports = "<div class=\"container\">\n  <div class=\"page-header\">\n    
 /***/ 620:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!_currentUser\">\n  <div class=\"text-xs-center\" style=\"margin-top: 100px\">\n    <h1>Papa ? Maman ? <small>Connectez vous pour gérer le piggy</small></h1>\n  </div>\n  <button (click)=\"getParent()\" type=\"button\" class=\"btn btn-primary btn-lg\">Se connecter</button>\n</div>\n<div *ngIf=\"_currentUser\">\n  <input type=\"text\" [(ngModel)]=\"amount\">\n  <button (click)=\"add(amount)\" class=\"btn btn-success\" >Ajouter</button>\n</div>\n"
+module.exports = "<div *ngIf=\"!_currentUser\">\n  <div class=\"text-xs-center\" style=\"margin-top: 100px\">\n    <h1>Papa ? Maman ? <small>Connectez vous pour gérer le piggy</small></h1>\n  </div>\n  <button (click)=\"getParent()\" type=\"button\" class=\"btn btn-primary btn-lg\">Se connecter</button>\n</div>\n<div *ngIf=\"_currentUser\">\n  <input type=\"text\" [(ngModel)]=\"amount\">\n  <button (click)=\"add(amount)\" class=\"btn btn-success\" >Ajouter</button>\n  <button (click)=\"remove(amount)\" class=\"btn btn-error\" >Supprimer</button>\n</div>\n"
 
 /***/ }),
 
