@@ -13,25 +13,19 @@ import java.util.Date;
  */
 public class ProjectChild implements Serializable {
 
-    private ProjectChild(){}
     private String name;
     private Integer amount = 0;
 
 
-    private static ProjectChild PROJECTYCHILD = new ProjectChild();
 
-    public static ProjectChild getInstance()
-    {
-        return PROJECTYCHILD;
+     public ProjectChild(String name,Integer amount ){this.name=name;this.amount=amount;}
+
+    public String getName() {
+        return name;
     }
 
-    public Integer addMoney(Integer value){
-        return amount+=value;
-    }
-
-    public Integer removeMoney(Integer value) throws CantRemoveMoney {
-        if( amount < value ) throw new CantRemoveMoney();
-        return amount-=value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAmount() {

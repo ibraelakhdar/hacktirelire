@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import projectchild.ProjectChild;
 import tirelire.exception.CantRemoveMoney;
 import tirelire.job.CompteJob;
 import tirelire.piggybank.PiggyBank;
@@ -30,7 +31,7 @@ public class TirelireRestController {
         //return compteJob.getSold(login);
         return new Double(500);
     }
-    @RequestMapping(value = "/api/piggy-bank/get-account/", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/piggy-bank/get-account", method = RequestMethod.GET)
     public  @ResponseBody PiggyBank  get() throws JsonProcessingException {
         //piggyBank.addMoney(number);
         // System.out.println(piggyBank.getAmount());
@@ -46,6 +47,20 @@ public class TirelireRestController {
     public @ResponseBody PiggyBank  reduce( @PathVariable(value="number") final Integer number) throws CantRemoveMoney {
         //return compteJob.getSold(login);
         piggyBank.removeMoney(number);
+        //  System.out.println(piggyBank.getAmount());
+        return piggyBank;
+    }
+    @RequestMapping(value = "/api/piggy-bank/create-project/{number}", method = RequestMethod.GET)
+    public @ResponseBody PiggyBank  create( @PathVariable(value="number") final Integer number,
+                                            @RequestParam(required = false, value="name") final String name) throws CantRemoveMoney {
+        ProjectChild projectChild;
+        if(name!=null)
+            projectChild = new ProjectChild(name,number);
+        else
+             projectChild = new ProjectChild("project"+number,number);
+
+        //return compteJob.getSold(login);
+        piggyBank.createProject(projectChild);
         //  System.out.println(piggyBank.getAmount());
         return piggyBank;
     }

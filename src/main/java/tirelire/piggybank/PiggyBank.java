@@ -2,6 +2,7 @@ package tirelire.piggybank;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import projectchild.ProjectChild;
 import tirelire.exception.CantRemoveMoney;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public class PiggyBank implements Serializable {
     ObjectMapper mapper = new ObjectMapper();
 
     private ArrayList<Transaction> history = new ArrayList<Transaction>();
-
+    private ProjectChild project;
     private static PiggyBank PIGGYBANK = new PiggyBank();
 
     public static PiggyBank getInstance()
@@ -53,6 +54,9 @@ public class PiggyBank implements Serializable {
 
     public void setHistory(ArrayList<Transaction> history) {
         this.history = history;
+    }
+    public void createProject(ProjectChild project) {
+        this.project = project;
     }
 
 }
